@@ -1,0 +1,36 @@
+---
+import { ArrowRight } from 'lucide-react';
+
+import { appLinks } from '@/lib/config';
+import { buttonClass } from '@/lib/ui';
+---
+
+<section aria-labelledby="cta-title" class="bg-white px-5 pb-20 sm:px-6 sm:pb-28 lg:px-8">
+  <div
+    data-reveal
+    class="relative isolate mx-auto max-w-6xl overflow-hidden rounded-[2rem] bg-brand-800 px-6 py-16 text-center sm:px-12 sm:py-20"
+  >
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+      <div class="absolute -top-24 -left-24 size-80 rounded-full bg-brand-600/50 blur-3xl"></div>
+      <div class="absolute -right-20 -bottom-28 size-96 rounded-full bg-brand-950/50 blur-3xl"></div>
+    </div>
+    <h2
+      id="cta-title"
+      class="mx-auto max-w-2xl text-3xl font-extrabold tracking-tight text-balance text-white sm:text-4xl"
+    >
+      Tu próximo hábito saludable empieza hoy
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-pretty text-brand-100">
+      Crea tu cuenta gratis y descubre planes, contenido y una comunidad que te acompaña.
+    </p>
+    <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+      <a href={appLinks.register} class={buttonClass('inverse', 'lg')}>
+        Crear cuenta gratis
+        <ArrowRight aria-hidden="true" className="size-5" />
+      </a>
+      <a href={appLinks.login} class={buttonClass('outlineInverse', 'lg')}>
+        Ya tengo una cuenta
+      </a>
+    </div>
+  </div>
+</section>

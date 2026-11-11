@@ -1,0 +1,44 @@
+---
+import { Image } from 'astro:assets';
+
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { team } from '@/data/site';
+---
+
+<section id="equipo" aria-labelledby="equipo-title" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+    <SectionHeading
+      id="equipo-title"
+      eyebrow="Equipo"
+      title="Las personas detrás de Healthy Bites"
+      description="Healthy Bites nació como un proyecto universitario. Este es el equipo que lo diseñó y desarrolló."
+    />
+
+    <ul role="list" class="mt-14 flex flex-wrap justify-center gap-x-5 gap-y-10">
+      {team.map((member, index) => (
+        <li
+          data-reveal
+          style={`--reveal-delay: ${index * 80}ms`}
+          class="w-[calc(50%-0.625rem)] sm:w-52 lg:w-[calc((100%-5rem)/5)]"
+        >
+          <figure class="group">
+            <div class="overflow-hidden rounded-3xl bg-brand-50 ring-1 ring-brand-900/5">
+              <Image
+                src={member.photo}
+                alt={`Retrato de ${member.name}`}
+                width={240}
+                height={288}
+                class="aspect-[5/6] w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+              />
+            </div>
+            <figcaption class="mt-4">
+              <span class="block font-bold text-ink">{member.name}</span>
+              <span class="block text-sm font-semibold text-brand-700">{member.role}</span>
+              <span class="mt-1 block text-sm leading-snug text-muted">{member.focus}</span>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

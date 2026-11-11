@@ -20,10 +20,10 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
-import alessiaAguilar from '@/assets/team/alessia-aguilar.png';
-import camilaMoreno from '@/assets/team/camila-moreno.png';
-import jhonattanChavez from '@/assets/team/jhonattan-chavez.png';
-import renzoLavado from '@/assets/team/renzo-lavado.png';
+import alessiaAguilar from '@/assets/team/alessia-aguilar.jpeg';
+import camilaMoreno from '@/assets/team/camila-moreno.jpg';
+import jhonattanChavez from '@/assets/team/jhonattan-chavez.jpg';
+import renzoLavado from '@/assets/team/renzo-lavado.jpg';
 import valentinFernandez from '@/assets/team/valentin-fernandez.png';
 
 export const site = {

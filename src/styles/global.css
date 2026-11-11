@@ -51,6 +51,11 @@
     @apply outline-2 outline-offset-2 outline-brand-600;
   }
 
+  /* Destinos de foco por programa (secciones, <main>): reciben el foco sin mostrar contorno. */
+  [tabindex='-1']:focus {
+    outline: none;
+  }
+
   ::selection {
     @apply bg-mint text-brand-950;
   }

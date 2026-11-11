@@ -20,10 +20,10 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
-import alessiaAguilar from '@/assets/team/alessia-aguilar.png';
-import camilaMoreno from '@/assets/team/camila-moreno.png';
-import jhonattanChavez from '@/assets/team/jhonattan-chavez.png';
-import renzoLavado from '@/assets/team/renzo-lavado.png';
+import alessiaAguilar from '@/assets/team/alessia-aguilar.jpeg';
+import camilaMoreno from '@/assets/team/camila-moreno.jpg';
+import jhonnatanChavez from '@/assets/team/jhonnatan-chavez.jpg';
+import renzoLavado from '@/assets/team/renzo-lavado.jpg';
 import valentinFernandez from '@/assets/team/valentin-fernandez.png';
 
 export const site = {
@@ -189,40 +189,45 @@ export const testimonials: Testimonial[] = [
 export interface TeamMember {
   name: string;
   role: string;
-  focus: string;
+  /** Responsabilidades reales; se omite si no aplica. */
+  focus?: string;
   photo: ImageMetadata;
+  linkedin: string;
 }
 
+/** Valentin Fernandez desarrolló y configuró la plataforma; el resto del equipo tiene roles de apoyo. */
 export const team: TeamMember[] = [
   {
     name: 'Valentin Fernandez',
-    role: 'Full Stack Developer',
-    focus: 'Backend, frontend y funcionalidades principales.',
+    role: 'Líder técnico · Full Stack',
+    focus:
+      'Desarrollo y configuración de la API, la aplicación web, la landing, el despliegue y CI/CD.',
     photo: valentinFernandez,
+    linkedin: 'https://www.linkedin.com/in/vfernandezg-dev/',
   },
   {
     name: 'Camila Moreno',
-    role: 'UI/UX Designer',
-    focus: 'Prototipos de interfaces y apoyo en frontend.',
+    role: 'Diseño UI/UX',
     photo: camilaMoreno,
+    linkedin: 'https://www.linkedin.com/in/camila-moreno-quevedo-01871a324/',
   },
   {
     name: 'Alessia Aguilar',
-    role: 'Backend Developer',
-    focus: 'Validación de funcionalidades.',
+    role: 'Base de datos',
     photo: alessiaAguilar,
+    linkedin: 'https://www.linkedin.com/in/alessia-aguilar-857670286/',
   },
   {
-    name: 'Jhonattan Chavez',
-    role: 'UI Designer',
-    focus: 'Diseño de interfaces.',
-    photo: jhonattanChavez,
+    name: 'Jhonnatan Chavez',
+    role: 'Arquitectura de software',
+    photo: jhonnatanChavez,
+    linkedin: 'https://www.linkedin.com/in/jhonnatan-del-castillo-a73a24316/',
   },
   {
     name: 'Renzo Lavado',
-    role: 'UI Designer',
-    focus: 'Diseño de la landing page.',
+    role: 'Comercial',
     photo: renzoLavado,
+    linkedin: 'https://www.linkedin.com/in/renzo-lavado-41aba2296/',
   },
 ];
 

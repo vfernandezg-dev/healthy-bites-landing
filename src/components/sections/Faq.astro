@@ -27,18 +27,29 @@ import { sectionHref } from '@/lib/config';
       </p>
     </SectionHeading>
 
-    <div class="divide-y divide-brand-900/10 rounded-3xl bg-surface ring-1 ring-brand-900/5">
+    <div
+      data-reveal
+      class="divide-y divide-brand-900/10 overflow-hidden rounded-3xl bg-surface ring-1 ring-brand-900/5"
+    >
       {faqs.map((faq) => (
-        <details class="group px-6 sm:px-8">
-          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 rounded-xl py-5 font-semibold text-ink [&::-webkit-details-marker]:hidden">
+        <details data-accordion-item class="faq-item group px-6 sm:px-8">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 rounded-xl py-5 font-semibold text-ink transition-colors hover:text-brand-800 [&::-webkit-details-marker]:hidden">
             {faq.question}
-            <span class="grid size-8 shrink-0 place-items-center rounded-full bg-mint text-brand-800 transition-transform duration-300 group-open:rotate-45">
+            <span class="faq-icon grid size-8 shrink-0 place-items-center rounded-full bg-mint text-brand-800">
               <Plus aria-hidden="true" className="size-4" />
             </span>
           </summary>
-          <p class="-mt-1 pr-12 pb-6 leading-relaxed text-muted">{faq.answer}</p>
+          <div data-accordion-content class="pr-12 pb-6">
+            <p class="leading-relaxed text-muted">{faq.answer}</p>
+          </div>
         </details>
       ))}
     </div>
   </div>
 </section>
+
+<script>
+  import { initAccordions } from '@/scripts/accordion';
+
+  initAccordions();
+</script>

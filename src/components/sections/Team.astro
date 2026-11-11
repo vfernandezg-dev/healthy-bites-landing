@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 
+import LinkedInIcon from '@/components/ui/LinkedInIcon.astro';
 import SectionHeading from '@/components/ui/SectionHeading.astro';
 import { team } from '@/data/site';
 ---
@@ -11,7 +12,7 @@ import { team } from '@/data/site';
       id="equipo-title"
       eyebrow="Equipo"
       title="Las personas detrás de Healthy Bites"
-      description="Healthy Bites nació como un proyecto universitario. Este es el equipo que lo diseñó y desarrolló."
+      description="Healthy Bites nació como un proyecto universitario. Valentin Fernandez lideró el proyecto y desarrolló y configuró la plataforma completa: la API, la aplicación web y esta landing."
     />
 
     <ul role="list" class="mt-14 flex flex-wrap justify-center gap-x-5 gap-y-10">
@@ -22,19 +23,32 @@ import { team } from '@/data/site';
           class="w-[calc(50%-0.625rem)] sm:w-52 lg:w-[calc((100%-5rem)/5)]"
         >
           <figure class="group">
-            <div class="overflow-hidden rounded-3xl bg-brand-50 ring-1 ring-brand-900/5">
+            <div class="relative overflow-hidden rounded-3xl bg-brand-50 ring-1 ring-brand-900/5">
               <Image
                 src={member.photo}
                 alt={`Retrato de ${member.name}`}
                 width={240}
                 height={288}
+                fit="cover"
+                position="top"
                 class="aspect-[5/6] w-full object-cover transition duration-500 group-hover:scale-[1.04]"
               />
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`LinkedIn de ${member.name} (se abre en una pestaña nueva)`}
+                class="absolute top-3 right-3 grid size-9 place-items-center rounded-full bg-white/90 text-brand-700 shadow-sm ring-1 ring-brand-900/10 backdrop-blur-sm transition-colors duration-200 hover:bg-brand-700 hover:text-white hover:ring-brand-700"
+              >
+                <LinkedInIcon class="size-4" />
+              </a>
             </div>
             <figcaption class="mt-4">
               <span class="block font-bold text-ink">{member.name}</span>
               <span class="block text-sm font-semibold text-brand-700">{member.role}</span>
-              <span class="mt-1 block text-sm leading-snug text-muted">{member.focus}</span>
+              {member.focus && (
+                <span class="mt-1 block text-sm leading-snug text-muted">{member.focus}</span>
+              )}
             </figcaption>
           </figure>
         </li>

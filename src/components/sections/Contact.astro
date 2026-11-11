@@ -1,0 +1,56 @@
+---
+import { Mail, MapPin, MessageCircle } from 'lucide-react';
+
+import ContactForm from '@/components/contact/ContactForm';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { site } from '@/data/site';
+import { config } from '@/lib/config';
+
+const details = [
+  { icon: Mail, label: 'Correo', value: site.email, href: `mailto:${site.email}` },
+  { icon: MapPin, label: 'Ubicación', value: site.location },
+  { icon: MessageCircle, label: 'Respuesta', value: 'Te contestamos por correo electrónico.' },
+];
+---
+
+<section id="contacto" aria-labelledby="contacto-title" class="py-20 sm:py-28">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 sm:px-6 lg:grid-cols-5 lg:gap-16 lg:px-8">
+    <div class="lg:col-span-2">
+      <SectionHeading
+        id="contacto-title"
+        align="left"
+        eyebrow="Contacto"
+        title="¿Hablamos?"
+        description="¿Tienes preguntas, sugerencias o quieres colaborar con nosotros? Escríbenos y te responderemos lo antes posible."
+      />
+      <ul role="list" class="mt-10 space-y-6">
+        {details.map((detail) => (
+          <li class="flex gap-4">
+            <span class="grid size-11 shrink-0 place-items-center rounded-xl bg-mint text-brand-800">
+              <detail.icon aria-hidden="true" className="size-5" />
+            </span>
+            <div>
+              <p class="text-sm font-semibold text-ink">{detail.label}</p>
+              <p class="mt-0.5 text-muted">
+                {detail.href ? (
+                  <a
+                    href={detail.href}
+                    class="font-medium text-brand-700 underline-offset-4 hover:underline"
+                  >
+                    {detail.value}
+                  </a>
+                ) : (
+                  detail.value
+                )}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="lg:col-span-3">
+      <ContactForm client:visible apiUrl={config.apiUrl} fallbackEmail={site.email} />
+    </div>
+  </div>
+</section>

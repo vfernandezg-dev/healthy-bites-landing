@@ -1,0 +1,42 @@
+---
+import { ArrowRight } from 'lucide-react';
+
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { steps } from '@/data/site';
+import { appLinks } from '@/lib/config';
+import { buttonClass } from '@/lib/ui';
+---
+
+<section id="como-funciona" aria-labelledby="como-funciona-title" class="py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+    <SectionHeading
+      id="como-funciona-title"
+      eyebrow="Cómo funciona"
+      title="Empieza en tres pasos"
+      description="Sin instalaciones ni complicaciones: entras desde el navegador y avanzas a tu propio ritmo."
+    />
+
+    <ol
+      role="list"
+      class="relative mt-16 grid gap-12 lg:grid-cols-3 lg:gap-8 lg:before:absolute lg:before:inset-x-[16.5%] lg:before:top-7 lg:before:border-t-2 lg:before:border-dashed lg:before:border-brand-200"
+    >
+      {steps.map((step, index) => (
+        <li data-reveal style={`--reveal-delay: ${index * 120}ms`} class="relative text-center">
+          <span class="relative mx-auto grid size-14 place-items-center rounded-2xl bg-brand-700 text-white shadow-lg shadow-brand-700/25">
+            <step.icon aria-hidden="true" className="size-6" />
+          </span>
+          <p class="mt-6 text-sm font-bold text-brand-700">Paso {index + 1}</p>
+          <h3 class="mt-1 text-xl font-bold text-ink">{step.title}</h3>
+          <p class="mx-auto mt-2 max-w-xs leading-relaxed text-muted">{step.description}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-14 flex justify-center">
+      <a href={appLinks.register} class={buttonClass('primary', 'lg')}>
+        Crear mi cuenta gratis
+        <ArrowRight aria-hidden="true" className="size-5" />
+      </a>
+    </div>
+  </div>
+</section>

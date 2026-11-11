@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+
+import logoMarkWhite from '@/assets/brand/logo-mark-white.png';
+import SectionHeading from '@/components/ui/SectionHeading.astro';
+import { aboutPillars, platformFacts } from '@/data/site';
+---
+
+<section id="nosotros" aria-labelledby="nosotros-title" class="bg-white py-20 sm:py-28">
+  <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+    <div>
+      <SectionHeading
+        id="nosotros-title"
+        align="left"
+        eyebrow="Nosotros"
+        title="Una vida saludable, al alcance de todos"
+        description="En Healthy Bites reunimos contenido educativo de calidad, planes alimenticios adaptados a tus objetivos y una comunidad que te acompaña, para que cuidar tu alimentación sea simple y sostenible."
+      />
+
+      <ul role="list" class="mt-10 space-y-6">
+        {aboutPillars.map((pillar, index) => (
+          <li data-reveal style={`--reveal-delay: ${index * 90}ms`} class="flex gap-4">
+            <span class="grid size-11 shrink-0 place-items-center rounded-xl bg-mint text-brand-800">
+              <pillar.icon aria-hidden="true" className="size-5" />
+            </span>
+            <div>
+              <h3 class="font-bold text-ink">{pillar.title}</h3>
+              <p class="mt-1 text-muted">{pillar.description}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div
+      data-reveal
+      class="relative isolate overflow-hidden rounded-[2rem] bg-brand-900 p-8 text-white sm:p-12"
+    >
+      <Image
+        src={logoMarkWhite}
+        alt=""
+        width={320}
+        height={320}
+        layout="fixed"
+        class="pointer-events-none absolute -right-16 -bottom-16 -z-10 opacity-[0.07]"
+      />
+      <p class="text-sm font-bold tracking-wider text-brand-300 uppercase">La plataforma</p>
+      <p class="mt-3 max-w-sm text-2xl font-bold text-balance">
+        Herramientas concretas para cada parte de tu bienestar.
+      </p>
+      <dl class="mt-10 grid gap-6 sm:grid-cols-3 lg:grid-cols-1">
+        {platformFacts.map((fact) => (
+          <div class="flex flex-col-reverse gap-1 border-t border-white/15 pt-5 lg:flex-row-reverse lg:items-center lg:justify-end lg:gap-5">
+            <dt class="text-sm leading-snug text-brand-100">{fact.label}</dt>
+            <dd class="text-5xl font-extrabold tracking-tight text-mint lg:w-10">{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

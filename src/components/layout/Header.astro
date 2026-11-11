@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import { Menu, X } from 'lucide-react';
+
+import logoMark from '@/assets/brand/logo-mark.png';
+import { navLinks } from '@/data/site';
+import { appLinks, basePath, sectionHref } from '@/lib/config';
+import { buttonClass } from '@/lib/ui';
+---
+
+<header
+  data-site-header
+  data-solid="false"
+  class="fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow] duration-300 data-[solid=true]:bg-white/90 data-[solid=true]:shadow-[0_1px_0_rgb(18_38_27/0.06)] data-[solid=true]:backdrop-blur-md"
+>
+  <div class="mx-auto flex h-18 max-w-6xl items-center justify-between gap-6 px-5 sm:px-6 lg:px-8">
+    <a href={basePath} class="flex items-center gap-2.5 rounded-lg">
+      <Image src={logoMark} alt="" width={36} height={36} layout="fixed" loading="eager" />
+      <span class="text-lg font-extrabold tracking-tight text-ink">Healthy Bites</span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden lg:block">
+      <ul class="flex items-center gap-1">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={sectionHref(link.id)}
+              data-nav-link={link.id}
+              class="relative rounded-full px-3 py-2 text-sm font-medium text-muted transition-colors after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:scale-x-0 after:rounded-full after:bg-brand-600 after:transition-transform hover:text-brand-800 aria-[current=true]:text-brand-800 aria-[current=true]:after:scale-x-100"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="hidden items-center gap-2 lg:flex">
+      <a href={appLinks.login} class={buttonClass('ghost')}>
+        Iniciar sesión
+      </a>
+      <a href={appLinks.register} class={buttonClass('primary')}>
+        Empieza gratis
+      </a>
+    </div>
+
+    <button
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="menu-movil"
+      aria-label="Menú"
+      class="group -mr-2 grid size-11 place-items-center rounded-full text-ink transition-colors hover:bg-brand-50 lg:hidden"
+    >
+      <Menu aria-hidden="true" className="size-6 group-aria-expanded:hidden" />
+      <X aria-hidden="true" className="hidden size-6 group-aria-expanded:block" />
+    </button>
+  </div>
+
+  <div
+    id="menu-movil"
+    data-menu-panel
+    hidden
+    class="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-brand-900/5 bg-white px-5 pt-4 pb-6 shadow-lg sm:px-6 lg:hidden"
+  >
+    <nav aria-label="Principal (móvil)">
+      <ul class="flex flex-col">
+        {navLinks.map((link) => (
+          <li>
+            <a
+              href={sectionHref(link.id)}
+              data-nav-link={link.id}
+              class="block rounded-xl px-3 py-3 text-base font-medium text-ink hover:bg-brand-50 aria-[current=true]:bg-brand-50 aria-[current=true]:text-brand-800"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="mt-4 grid gap-3 border-t border-brand-900/5 pt-5 sm:grid-cols-2">
+      <a href={appLinks.login} class={buttonClass('secondary', 'lg')}>
+        Iniciar sesión
+      </a>
+      <a href={appLinks.register} class={buttonClass('primary', 'lg')}>
+        Empieza gratis
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { initHeader } from '@/scripts/header';
+
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  if (header) initHeader(header);
+</script>

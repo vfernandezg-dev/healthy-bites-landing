@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/plus-jakarta-sans';
+
+/*
+ * Tokens de diseño de Healthy Bites.
+ * - brand-600 (#2E8B57) es el verde histórico de la marca: úsalo en iconos y elementos grandes.
+ * - brand-700 es el verde para texto y botones: blanco sobre brand-700 tiene contraste 6:1 (WCAG AA).
+ * - mint es el tono del logo original.
+ */
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #effaf3;
+  --color-brand-100: #d9f2e2;
+  --color-brand-200: #b5e5c8;
+  --color-brand-300: #8fd9ad;
+  --color-brand-400: #5bbf85;
+  --color-brand-500: #3aa56a;
+  --color-brand-600: #2e8b57;
+  --color-brand-700: #237047;
+  --color-brand-800: #1d593a;
+  --color-brand-900: #17482f;
+  --color-brand-950: #0b2a1b;
+  --color-mint: #c4f2d0;
+
+  --color-ink: #12261b;
+  --color-muted: #4b5d52;
+  --color-surface: #fbfdfb;
+
+  --shadow-card: 0 1px 2px rgb(18 38 27 / 0.04), 0 8px 24px -8px rgb(18 38 27 / 0.1);
+  --shadow-card-hover: 0 1px 2px rgb(18 38 27 / 0.06), 0 16px 40px -12px rgb(18 38 27 / 0.18);
+
+  --animate-reveal: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa el header fijo al saltar a un ancla. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface font-sans text-ink antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-600;
+  }
+
+  ::selection {
+    @apply bg-mint text-brand-950;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/*
+ * Aparición al hacer scroll (mejora progresiva).
+ * El contenido solo se oculta cuando el script que lo revela ya está activo (clase .reveal-ready,
+ * la añade ese mismo script) y el usuario no pidió menos movimiento. Sin JS todo queda visible.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-ready [data-reveal]:not(.is-visible) {
+    opacity: 0;
+  }
+
+  .reveal-ready [data-reveal].is-visible {
+    animation: var(--animate-reveal);
+    animation-delay: var(--reveal-delay, 0ms);
+  }
+}

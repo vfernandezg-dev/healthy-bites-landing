@@ -1,0 +1,9 @@
+dist/
+.astro/
+node_modules/
+coverage/
+playwright-report/
+test-results/
+src/assets/
+public/
+pnpm-lock.yaml

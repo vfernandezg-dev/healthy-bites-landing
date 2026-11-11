@@ -1,0 +1,26 @@
+---
+import { ArrowLeft } from 'lucide-react';
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { basePath } from '@/lib/config';
+import { buttonClass } from '@/lib/ui';
+---
+
+<BaseLayout title="Página no encontrada · Healthy Bites" noindex>
+  <section
+    aria-labelledby="not-found-title"
+    class="mx-auto flex min-h-[80vh] max-w-xl flex-col items-center justify-center px-5 pt-28 pb-20 text-center"
+  >
+    <p class="text-7xl font-extrabold tracking-tight text-brand-600">404</p>
+    <h1 id="not-found-title" class="mt-4 text-3xl font-extrabold tracking-tight text-ink">
+      No encontramos esta página
+    </h1>
+    <p class="mt-4 text-lg text-muted">
+      Es posible que el enlace esté incompleto o que la página ya no exista.
+    </p>
+    <a href={basePath} class:list={[buttonClass('primary', 'lg'), 'mt-8']}>
+      <ArrowLeft aria-hidden="true" className="size-5" />
+      Volver al inicio
+    </a>
+  </section>
+</BaseLayout>

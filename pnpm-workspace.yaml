@@ -1,0 +1,10 @@
+# Configuración de pnpm para este proyecto (no es un monorepo).
+
+# Protección de supply chain: solo se instalan versiones publicadas hace al menos 24 h
+# (1440 minutos). Así, una versión comprometida tiene tiempo de detectarse y retirarse
+# antes de llegar aquí. Debe coincidir en local y en CI.
+minimumReleaseAge: 1440
+
+overrides:
+  # minimatch < 11.0.1 tiene un ReDoS (GHSA-g3hv-75wg-m249); solo lo usan ESLint y sus plugins.
+  minimatch: ^11.0.1

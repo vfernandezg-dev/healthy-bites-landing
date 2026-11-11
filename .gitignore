@@ -1,0 +1,26 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# tests
+coverage/
+playwright-report/
+test-results/
+blob-report/
+
+# logs
+*-debug.log*
+
+# environment variables
+.env
+.env.*
+!.env.example
+
+# editors / OS
+.idea/
+.DS_Store
+Thumbs.db

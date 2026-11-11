@@ -1,0 +1,96 @@
+---
+import { Image } from 'astro:assets';
+import { Code, Mail, MapPin } from 'lucide-react';
+
+import logoMarkWhite from '@/assets/brand/logo-mark-white.png';
+import { navLinks, repositories, site } from '@/data/site';
+import { appLinks, basePath, sectionHref } from '@/lib/config';
+
+const year = new Date().getFullYear();
+const linkClass = 'rounded transition-colors hover:text-white';
+---
+
+<footer class="bg-brand-950 text-brand-100">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] lg:px-8">
+    <div>
+      <a href={basePath} class="inline-flex items-center gap-2.5 rounded-lg">
+        <Image src={logoMarkWhite} alt="" width={36} height={36} layout="fixed" />
+        <span class="text-lg font-extrabold tracking-tight text-white">{site.name}</span>
+      </a>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-brand-200">
+        Tu plataforma de nutrición y bienestar: planes alimenticios, contenido de expertos y una
+        comunidad que te acompaña.
+      </p>
+      <ul class="mt-6 space-y-3 text-sm">
+        <li class="flex items-center gap-2.5">
+          <Mail aria-hidden="true" className="size-4 shrink-0 text-brand-300" />
+          <a href={`mailto:${site.email}`} class={linkClass}>
+            {site.email}
+          </a>
+        </li>
+        <li class="flex items-center gap-2.5">
+          <MapPin aria-hidden="true" className="size-4 shrink-0 text-brand-300" />
+          {site.location}
+        </li>
+      </ul>
+    </div>
+
+    <nav aria-labelledby="footer-explora">
+      <h2 id="footer-explora" class="text-sm font-bold text-white">
+        Explora
+      </h2>
+      <ul class="mt-4 space-y-3 text-sm">
+        {navLinks.map((link) => (
+          <li>
+            <a href={sectionHref(link.id)} class={linkClass}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <nav aria-labelledby="footer-cuenta">
+      <h2 id="footer-cuenta" class="text-sm font-bold text-white">
+        Tu cuenta
+      </h2>
+      <ul class="mt-4 space-y-3 text-sm">
+        <li>
+          <a href={appLinks.login} class={linkClass}>
+            Iniciar sesión
+          </a>
+        </li>
+        <li>
+          <a href={appLinks.register} class={linkClass}>
+            Crear cuenta gratis
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <nav aria-labelledby="footer-codigo">
+      <h2 id="footer-codigo" class="flex items-center gap-2 text-sm font-bold text-white">
+        <Code aria-hidden="true" className="size-4 text-brand-300" />
+        Código fuente
+      </h2>
+      <ul class="mt-4 space-y-3 text-sm">
+        {repositories.map((repo) => (
+          <li>
+            <a href={repo.href} class={linkClass}>
+              {repo.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="border-t border-white/10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-sm text-brand-200 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
+      <p>
+        © {year} {site.name}. Proyecto académico.
+      </p>
+      <p>Hecho en {site.location}</p>
+    </div>
+  </div>
+</footer>

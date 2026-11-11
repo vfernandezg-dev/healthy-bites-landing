@@ -189,8 +189,6 @@ export const testimonials: Testimonial[] = [
 export interface TeamMember {
   name: string;
   role: string;
-  /** Responsabilidades reales; se omite si no aplica. */
-  focus?: string;
   photo: ImageMetadata;
   linkedin: string;
 }
@@ -200,8 +198,6 @@ export const team: TeamMember[] = [
   {
     name: 'Valentin Fernandez',
     role: 'Líder técnico · Full Stack',
-    focus:
-      'Desarrollo y configuración de la API, la aplicación web, la landing, el despliegue y CI/CD.',
     photo: valentinFernandez,
     linkedin: 'https://www.linkedin.com/in/vfernandezg-dev/',
   },

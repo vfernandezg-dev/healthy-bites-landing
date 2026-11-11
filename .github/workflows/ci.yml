@@ -22,23 +22,26 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
+      # Instala la versión de pnpm fijada en package.json ("packageManager").
+      - uses: pnpm/action-setup@v6
+
       - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
-          cache: npm
+          cache: pnpm
 
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run format:check
-      - run: npm run check
-      - run: npm test
-      - run: npm run build
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm format:check
+      - run: pnpm check
+      - run: pnpm test
+      - run: pnpm build
 
       - name: Instalar Chromium para Playwright
-        run: npx playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
 
       - name: Tests E2E y accesibilidad (axe)
-        run: npm run test:e2e
+        run: pnpm test:e2e
 
       - name: Subir reporte de Playwright
         if: failure()

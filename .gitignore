@@ -13,7 +13,7 @@ test-results/
 blob-report/
 
 # logs
-npm-debug.log*
+*-debug.log*
 
 # environment variables
 .env

@@ -5,9 +5,11 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=24.16.0"
+    "node": ">=24.16.0",
+    "pnpm": ">=12"
   },
   "scripts": {
+    "preinstall": "node scripts/only-pnpm.mjs",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
@@ -18,7 +20,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "verify": "npm run lint && npm run format:check && npm run check && npm run test && npm run build",
+    "verify": "pnpm lint && pnpm format:check && pnpm check && pnpm test && pnpm build",
     "astro": "astro",
     "brand:assets": "node scripts/generate-brand-assets.mjs"
   },
@@ -58,7 +60,5 @@
     "typescript-eslint": "^8.72.2",
     "vitest": "^5.1.0"
   },
-  "overrides": {
-    "minimatch": "^11.0.1"
-  }
+  "packageManager": "pnpm@12.18.0"
 }

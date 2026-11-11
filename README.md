@@ -61,28 +61,37 @@ scripts/               # Generación de assets de marca (favicon, OG image, logo
 
 ## Desarrollo
 
-Requisitos: **Node.js 24 LTS** (ver [`.nvmrc`](.nvmrc)).
+Requisitos:
+
+- **Node.js 24 LTS** (ver [`.nvmrc`](.nvmrc)).
+- **pnpm**. La versión exacta está fijada en `package.json` (`packageManager`), y pnpm la usa
+  automáticamente dentro del proyecto. Este proyecto no admite npm ni yarn: `npm install` falla a propósito.
 
 ```bash
-npm install
+pnpm install
 cp .env.example .env   # opcional: apunta a una API o web-app local
-npm run dev            # http://localhost:4321/healthy-bites-landing/
+pnpm dev               # http://localhost:4321/healthy-bites-landing/
 ```
 
-| Script                 | Descripción                                                 |
-| ---------------------- | ----------------------------------------------------------- |
-| `npm run dev`          | Servidor de desarrollo                                      |
-| `npm run build`        | Build estático en `dist/`                                   |
-| `npm run preview`      | Sirve el build localmente                                   |
-| `npm run lint`         | ESLint (TypeScript, Astro, React Hooks, accesibilidad)      |
-| `npm run format`       | Formatea con Prettier                                       |
-| `npm run check`        | Chequeo de tipos de Astro y TypeScript                      |
-| `npm test`             | Tests unitarios y de componentes (Vitest)                   |
-| `npm run test:e2e`     | Tests E2E y de accesibilidad WCAG 2.2 AA (requiere `build`) |
-| `npm run verify`       | Lint + formato + tipos + tests + build                      |
-| `npm run brand:assets` | Regenera logo transparente, favicon, iconos e imagen OG     |
+| Script              | Descripción                                                 |
+| ------------------- | ----------------------------------------------------------- |
+| `pnpm dev`          | Servidor de desarrollo                                      |
+| `pnpm build`        | Build estático en `dist/`                                   |
+| `pnpm preview`      | Sirve el build localmente                                   |
+| `pnpm lint`         | ESLint (TypeScript, Astro, React Hooks, accesibilidad)      |
+| `pnpm format`       | Formatea con Prettier                                       |
+| `pnpm check`        | Chequeo de tipos de Astro y TypeScript                      |
+| `pnpm test`         | Tests unitarios y de componentes (Vitest)                   |
+| `pnpm test:e2e`     | Tests E2E y de accesibilidad WCAG 2.2 AA (requiere `build`) |
+| `pnpm verify`       | Lint + formato + tipos + tests + build                      |
+| `pnpm brand:assets` | Regenera logo transparente, favicon, iconos e imagen OG     |
 
-La primera vez que ejecutes los tests E2E, instala el navegador con `npx playwright install chromium`.
+La primera vez que ejecutes los tests E2E, instala el navegador con `pnpm exec playwright install chromium`.
+
+## Versión anterior
+
+El sitio original (HTML + Bootstrap) se conserva en la rama
+[`legacy`](https://github.com/vfernandezg-dev/healthy-bites-landing/tree/legacy), solo como referencia.
 
 ### Variables de entorno
 

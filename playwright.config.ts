@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 
 /**
- * Pruebas E2E sobre el build de producción (`npm run build` antes de ejecutarlas).
+ * Pruebas E2E sobre el build de producción (`pnpm build` antes de ejecutarlas).
  * El sitio se sirve bajo la misma ruta base que en GitHub Pages.
  */
 const PORT = 4321;
@@ -23,7 +23,7 @@ export default defineConfig({
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: `npx astro preview --port ${PORT}`,
+    command: `pnpm exec astro preview --port ${PORT}`,
     url: BASE_URL,
     reuseExistingServer: !process.env.CI,
   },

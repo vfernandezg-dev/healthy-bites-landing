@@ -6,7 +6,7 @@
  * Este script extrae la silueta como máscara de transparencia y la recolorea con
  * los colores de marca, para obtener un logo utilizable en cualquier fondo.
  *
- * Uso: npm run brand:assets   (los archivos generados se versionan en el repo)
+ * Uso: pnpm brand:assets   (los archivos generados se versionan en el repo)
  */
 import { mkdir, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';

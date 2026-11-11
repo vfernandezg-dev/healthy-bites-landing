@@ -35,7 +35,10 @@ import { buttonClass } from '@/lib/ui';
     <div class="mt-14 flex justify-center">
       <a href={appLinks.register} class={buttonClass('primary', 'lg')}>
         Crear mi cuenta gratis
-        <ArrowRight aria-hidden="true" className="size-5" />
+        <ArrowRight
+          aria-hidden="true"
+          className="size-5 transition-transform duration-300 group-hover:translate-x-1"
+        />
       </a>
     </div>
   </div>

@@ -6,6 +6,22 @@ import heroBowl from '@/assets/images/hero-bowl.jpg';
 import { heroHighlights } from '@/data/site';
 import { appLinks, sectionHref } from '@/lib/config';
 import { buttonClass } from '@/lib/ui';
+
+/*
+ * Secuencia de entrada (ms desde la carga). El texto entra en cascada; la imagen acompaña
+ * desde el inicio; el subrayado y las tarjetas cierran la composición.
+ */
+const timing = {
+  eyebrow: 100,
+  title: 200,
+  text: 320,
+  actions: 440,
+  highlights: 560,
+  image: 250,
+  underline: 950,
+  cardStreak: 1000,
+  cardHabits: 1150,
+};
 ---
 
 <section
@@ -14,38 +30,85 @@ import { buttonClass } from '@/lib/ui';
   class="relative isolate overflow-hidden pt-28 pb-20 sm:pt-36 lg:pb-28"
 >
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-    <div class="absolute -top-48 -right-40 size-[38rem] rounded-full bg-mint/70 blur-3xl"></div>
-    <div class="absolute -bottom-24 -left-32 size-96 rounded-full bg-brand-100/80 blur-3xl"></div>
+    <div
+      data-ambient
+      class="absolute -top-48 -right-40 size-[38rem] rounded-full bg-mint/70 blur-3xl"
+    ></div>
+    <div
+      data-ambient="slow"
+      class="absolute -bottom-24 -left-32 size-96 rounded-full bg-brand-100/80 blur-3xl"
+    ></div>
   </div>
 
   <div class="mx-auto grid max-w-6xl items-center gap-14 px-5 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:px-8">
     <div>
-      <p class="inline-flex items-center gap-2 rounded-full bg-white/80 px-3.5 py-1.5 text-sm font-semibold text-brand-800 ring-1 ring-brand-900/10">
+      <p
+        data-enter
+        style={`--enter-delay: ${timing.eyebrow}ms`}
+        class="inline-flex items-center gap-2 rounded-full bg-white/80 px-3.5 py-1.5 text-sm font-semibold text-brand-800 ring-1 ring-brand-900/10"
+      >
         <Sparkles aria-hidden="true" className="size-4 text-brand-600" />
         Nutrición · Hábitos · Comunidad
       </p>
       <h1
         id="hero-title"
+        data-enter
+        style={`--enter-delay: ${timing.title}ms`}
         class="mt-6 text-4xl leading-[1.08] font-extrabold tracking-tight text-balance text-ink sm:text-5xl lg:text-6xl"
       >
-        Come mejor y crea hábitos <span class="text-brand-700">que duran</span>
+        Come mejor y crea hábitos{' '}
+        <span class="relative whitespace-nowrap text-brand-700">
+          que duran
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 300 16"
+            preserveAspectRatio="none"
+            class="absolute -bottom-2 left-0 h-3 w-full text-brand-400 sm:-bottom-3"
+          >
+            <path
+              d="M3 12 C 70 3, 170 2, 297 9"
+              pathLength="1"
+              data-enter="draw"
+              style={`--enter-delay: ${timing.underline}ms`}
+              fill="none"
+              stroke="currentColor"
+              stroke-width="5"
+              stroke-linecap="round"
+            ></path>
+          </svg>
+        </span>
       </h1>
-      <p class="mt-6 max-w-xl text-lg leading-relaxed text-pretty text-muted">
+      <p
+        data-enter
+        style={`--enter-delay: ${timing.text}ms`}
+        class="mt-7 max-w-xl text-lg leading-relaxed text-pretty text-muted"
+      >
         Healthy Bites reúne planes alimenticios creados por nutricionistas, contenido confiable y
         seguimiento de hábitos en un solo lugar, para que avances a tu ritmo.
       </p>
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+      <div
+        data-enter
+        style={`--enter-delay: ${timing.actions}ms`}
+        class="mt-9 flex flex-col gap-3 sm:flex-row"
+      >
         <a href={appLinks.register} class={buttonClass('primary', 'lg')}>
           Empieza gratis
-          <ArrowRight aria-hidden="true" className="size-5" />
+          <ArrowRight
+            aria-hidden="true"
+            className="size-5 transition-transform duration-300 group-hover:translate-x-1"
+          />
         </a>
         <a href={sectionHref('como-funciona')} class={buttonClass('secondary', 'lg')}>
           Ver cómo funciona
         </a>
       </div>
       <ul class="mt-9 flex flex-col gap-3 text-sm font-medium text-muted sm:flex-row sm:flex-wrap sm:gap-x-6">
-        {heroHighlights.map((highlight) => (
-          <li class="flex items-center gap-2">
+        {heroHighlights.map((highlight, index) => (
+          <li
+            data-enter
+            style={`--enter-delay: ${timing.highlights + index * 90}ms`}
+            class="flex items-center gap-2"
+          >
             <CircleCheck aria-hidden="true" className="size-5 shrink-0 text-brand-600" />
             {highlight}
           </li>
@@ -54,7 +117,11 @@ import { buttonClass } from '@/lib/ui';
     </div>
 
     <div class="relative mx-auto w-full max-w-lg lg:max-w-none">
-      <div class="overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-900/15 ring-1 ring-brand-900/5">
+      <div
+        data-enter="zoom"
+        style={`--enter-delay: ${timing.image}ms`}
+        class="overflow-hidden rounded-[2rem] shadow-2xl shadow-brand-900/15 ring-1 ring-brand-900/5"
+      >
         <Picture
           src={heroBowl}
           alt="Bowl de açaí con fresas, kiwi, mango, arándanos y granada, rodeado de fruta fresca"
@@ -71,6 +138,8 @@ import { buttonClass } from '@/lib/ui';
       <!-- Tarjetas ilustrativas de la app (decorativas). -->
       <div
         aria-hidden="true"
+        data-enter="pop"
+        style={`--enter-delay: ${timing.cardStreak}ms`}
         class="absolute -bottom-6 -left-3 flex items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-card ring-1 ring-brand-900/5 sm:-left-8"
       >
         <span class="grid size-11 place-items-center rounded-xl bg-orange-100 text-orange-600">
@@ -83,6 +152,8 @@ import { buttonClass } from '@/lib/ui';
       </div>
       <div
         aria-hidden="true"
+        data-enter="pop"
+        style={`--enter-delay: ${timing.cardHabits}ms`}
         class="absolute -top-5 -right-3 hidden items-center gap-3 rounded-2xl bg-white p-3 pr-5 shadow-card ring-1 ring-brand-900/5 sm:flex lg:-right-6"
       >
         <span class="grid size-11 place-items-center rounded-xl bg-mint text-brand-800">

@@ -26,7 +26,10 @@ import { buttonClass } from '@/lib/ui';
     <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
       <a href={appLinks.register} class={buttonClass('inverse', 'lg')}>
         Crear cuenta gratis
-        <ArrowRight aria-hidden="true" className="size-5" />
+        <ArrowRight
+          aria-hidden="true"
+          className="size-5 transition-transform duration-300 group-hover:translate-x-1"
+        />
       </a>
       <a href={appLinks.login} class={buttonClass('outlineInverse', 'lg')}>
         Ya tengo una cuenta

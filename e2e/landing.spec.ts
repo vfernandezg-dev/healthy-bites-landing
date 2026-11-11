@@ -96,3 +96,50 @@ test('el formulario de contacto valida y envía a la API', async ({ page }) => {
   await expect(page.getByRole('heading', { name: '¡Gracias, Ana!' })).toBeVisible();
   expect(payload).toMatchObject({ nombre: 'Ana', correo: 'ana@correo.com', website: '' });
 });
+
+test.describe('animaciones', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'no-preference' });
+  });
+
+  test('el hero entra con animación y todo su contenido termina visible', async ({ page }) => {
+    await page.goto('./');
+    const title = page.getByRole('heading', { level: 1 });
+    await expect(title).toHaveCSS('animation-name', 'enter-up');
+
+    // Al terminar la secuencia (≈1,9 s) nada debe quedar oculto.
+    await page.waitForTimeout(2200);
+    const hidden = await page
+      .locator('#inicio [data-enter]:visible')
+      .evaluateAll(
+        (elements) =>
+          elements.filter((element) => getComputedStyle(element).opacity !== '1').length,
+      );
+    expect(hidden).toBe(0);
+  });
+
+  test('las preguntas frecuentes se abren y cierran con una transición de altura', async ({
+    page,
+  }) => {
+    await page.goto('./#faq');
+    const item = page.locator('details[data-accordion-item]').first();
+    const summary = item.locator('summary');
+    const collapsed = await item.evaluate((element) => element.getBoundingClientRect().height);
+
+    await summary.click();
+    await page.waitForTimeout(250);
+    const midway = await item.evaluate((element) => element.getBoundingClientRect().height);
+
+    await expect(item).toHaveAttribute('open', '');
+    await expect(item.getByText(/plan Básico sin costo/)).toBeVisible();
+    await page.waitForTimeout(700);
+    const expanded = await item.evaluate((element) => element.getBoundingClientRect().height);
+
+    // A mitad de camino la altura está entre cerrada y abierta: hubo transición.
+    expect(midway).toBeGreaterThan(collapsed);
+    expect(midway).toBeLessThan(expanded);
+
+    await summary.click();
+    await expect(item).not.toHaveAttribute('open', '');
+  });
+});

@@ -5,7 +5,7 @@ import { defineConfig, devices } from '@playwright/test';
  * El sitio se sirve bajo la misma ruta base que en GitHub Pages.
  */
 const PORT = 4321;
-const BASE_PATH = '/healthy-bites-landing/';
+const BASE_PATH = '/';
 const BASE_URL = `http://localhost:${PORT}${BASE_PATH}`;
 
 export default defineConfig({

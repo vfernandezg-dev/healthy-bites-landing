@@ -32,7 +32,7 @@ export const site = {
   description:
     'Planes alimenticios creados por nutricionistas, contenido confiable y seguimiento de hábitos para que comas mejor y avances a tu ritmo.',
   locale: 'es_PE',
-  email: 'healtybite3@gmail.com',
+  email: 'projects@vfernandezg.dev',
   location: 'Trujillo, Perú',
 } as const;
 

@@ -69,8 +69,30 @@ test('el menú móvil se abre, navega y se cierra con Escape', async ({ page, is
   await toggle.click();
   await mobileNav.getByRole('link', { name: 'Preguntas' }).click();
   await expect(mobileNav).toBeHidden();
-  await expect(page).toHaveURL(/#faq$/);
   await expect(page.getByRole('heading', { name: 'Resolvemos tus dudas' })).toBeInViewport();
+  expect(new URL(page.url()).hash).toBe('');
+});
+
+test('la navegación entre secciones no añade "#" a la URL', async ({ page, isMobile }) => {
+  test.skip(Boolean(isMobile), 'En móvil se cubre con la prueba del menú desplegable');
+  await page.goto('./');
+  const urlBefore = page.url();
+
+  await page
+    .getByRole('navigation', { name: 'Principal', exact: true })
+    .getByRole('link', { name: 'Contacto' })
+    .click();
+
+  await expect(page.getByRole('heading', { name: '¿Hablamos?' })).toBeInViewport();
+  await expect(page.locator('#contacto')).toBeFocused();
+  expect(page.url()).toBe(urlBefore);
+});
+
+test('un enlace compartido con "#seccion" lleva a la sección y limpia la URL', async ({ page }) => {
+  await page.goto('./#faq');
+
+  await expect(page.getByRole('heading', { name: 'Resolvemos tus dudas' })).toBeInViewport();
+  await expect.poll(() => new URL(page.url()).hash).toBe('');
 });
 
 test('el formulario de contacto valida y envía a la API', async ({ page }) => {

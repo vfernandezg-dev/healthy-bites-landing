@@ -13,7 +13,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)
 ![pnpm](https://img.shields.io/badge/pnpm-12-F69220?logo=pnpm&logoColor=white)
 
-[**Ver el sitio**](https://vfernandezg-dev.github.io/healthy-bites-landing/) ·
+[**Ver el sitio**](https://healthybites.vfernandezg.dev) ·
 [Desarrollo](#desarrollo) ·
 [Arquitectura](#decisiones-de-arquitectura) ·
 [Equipo](#equipo)
@@ -116,7 +116,7 @@ docs/                  # Recursos del README
 ```bash
 pnpm install
 cp .env.example .env   # opcional: apunta a una API o aplicación web local
-pnpm dev               # http://localhost:4321/healthy-bites-landing/
+pnpm dev               # http://localhost:4321/
 ```
 
 ### Scripts
@@ -143,8 +143,8 @@ La primera vez que ejecutes los tests E2E, instala el navegador con
 | ---------------- | ----------------------------------------------------- | ------------------------------------ |
 | `PUBLIC_APP_URL` | `https://healthy-bites-v1.netlify.app`                | Enlaces a login y registro de la app |
 | `PUBLIC_API_URL` | `https://healthybites-api-latest.onrender.com/api/v1` | Endpoint del formulario de contacto  |
-| `SITE_URL`       | `https://vfernandezg-dev.github.io`                   | URL canónica, sitemap y Open Graph   |
-| `BASE_PATH`      | `/healthy-bites-landing`                              | Ruta base (GitHub Pages de proyecto) |
+| `SITE_URL`       | `https://healthybites.vfernandezg.dev`                | URL canónica, sitemap y Open Graph   |
+| `BASE_PATH`      | `/`                                                   | Ruta base del sitio                  |
 
 Para trabajar contra el backend local usa `PUBLIC_API_URL=http://localhost:8090/api/v1`.
 
@@ -153,7 +153,7 @@ Para trabajar contra el backend local usa `PUBLIC_API_URL=http://localhost:8090/
 - Cada pull request pasa por [`ci.yml`](.github/workflows/ci.yml): lint, formato, tipos, tests
   unitarios, build y tests E2E con auditoría de accesibilidad.
 - Cada push a `main` ejecuta [`deploy.yml`](.github/workflows/deploy.yml), que construye el sitio y lo
-  publica en GitHub Pages. Las URLs de producción se configuran como _variables_ del repositorio
+  publica en GitHub Pages con el dominio propio `healthybites.vfernandezg.dev` (DNS en Cloudflare). Las URLs de producción se configuran como _variables_ del repositorio
   (`Settings → Secrets and variables → Actions → Variables`): `PUBLIC_APP_URL` y `PUBLIC_API_URL`.
 
 ## Equipo

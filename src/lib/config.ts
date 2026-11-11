@@ -23,7 +23,7 @@ export const appLinks = {
   register: `${config.appUrl}/auth/register`,
 } as const;
 
-/** Ruta base del sitio con barra final (p. ej. "/healthy-bites-landing/"). */
+/** Ruta base del sitio con barra final ("/" en la raíz del subdominio). */
 export const basePath = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 /** Enlace a una sección de la página principal; funciona también desde otras páginas (404). */

@@ -4,10 +4,10 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 
-// GitHub Pages sirve el sitio como "project page" bajo /healthy-bites-landing/.
-// Ambos valores se pueden sobrescribir (p. ej. para un dominio propio) sin tocar el código.
-const site = process.env.SITE_URL ?? 'https://vfernandezg-dev.github.io';
-const base = process.env.BASE_PATH ?? '/healthy-bites-landing';
+// El sitio se publica en la raíz de su subdominio (GitHub Pages con dominio propio).
+// Ambos valores se pueden sobrescribir con variables de entorno sin tocar el código.
+const site = process.env.SITE_URL ?? 'https://healthybites.vfernandezg.dev';
+const base = process.env.BASE_PATH ?? '/';
 
 export default defineConfig({
   site,

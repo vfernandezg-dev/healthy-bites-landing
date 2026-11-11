@@ -22,7 +22,7 @@ import {
 
 import alessiaAguilar from '@/assets/team/alessia-aguilar.jpeg';
 import camilaMoreno from '@/assets/team/camila-moreno.jpg';
-import jhonattanChavez from '@/assets/team/jhonattan-chavez.jpg';
+import jhonnatanChavez from '@/assets/team/jhonnatan-chavez.jpg';
 import renzoLavado from '@/assets/team/renzo-lavado.jpg';
 import valentinFernandez from '@/assets/team/valentin-fernandez.png';
 
@@ -192,20 +192,43 @@ export interface TeamMember {
   /** Responsabilidades reales; se omite si no aplica. */
   focus?: string;
   photo: ImageMetadata;
+  linkedin: string;
 }
 
-/** Roles reales: el desarrollo y la configuración completos los hizo Valentin Fernandez. */
+/** Valentin Fernandez desarrolló y configuró la plataforma; el resto del equipo tiene roles de apoyo. */
 export const team: TeamMember[] = [
   {
     name: 'Valentin Fernandez',
     role: 'Líder técnico · Full Stack',
-    focus: 'Arquitectura, API REST, aplicación web, landing, base de datos, despliegue y CI/CD.',
+    focus:
+      'Desarrollo y configuración de la API, la aplicación web, la landing, el despliegue y CI/CD.',
     photo: valentinFernandez,
+    linkedin: 'https://www.linkedin.com/in/vfernandezg-dev/',
   },
-  { name: 'Camila Moreno', role: 'Integrante del equipo', photo: camilaMoreno },
-  { name: 'Alessia Aguilar', role: 'Integrante del equipo', photo: alessiaAguilar },
-  { name: 'Jhonattan Chavez', role: 'Integrante del equipo', photo: jhonattanChavez },
-  { name: 'Renzo Lavado', role: 'Integrante del equipo', photo: renzoLavado },
+  {
+    name: 'Camila Moreno',
+    role: 'Diseño UI/UX',
+    photo: camilaMoreno,
+    linkedin: 'https://www.linkedin.com/in/camila-moreno-quevedo-01871a324/',
+  },
+  {
+    name: 'Alessia Aguilar',
+    role: 'Base de datos',
+    photo: alessiaAguilar,
+    linkedin: 'https://www.linkedin.com/in/alessia-aguilar-857670286/',
+  },
+  {
+    name: 'Jhonnatan Chavez',
+    role: 'Arquitectura de software',
+    photo: jhonnatanChavez,
+    linkedin: 'https://www.linkedin.com/in/jhonnatan-del-castillo-a73a24316/',
+  },
+  {
+    name: 'Renzo Lavado',
+    role: 'Comercial',
+    photo: renzoLavado,
+    linkedin: 'https://www.linkedin.com/in/renzo-lavado-41aba2296/',
+  },
 ];
 
 export interface Faq {

@@ -189,41 +189,23 @@ export const testimonials: Testimonial[] = [
 export interface TeamMember {
   name: string;
   role: string;
-  focus: string;
+  /** Responsabilidades reales; se omite si no aplica. */
+  focus?: string;
   photo: ImageMetadata;
 }
 
+/** Roles reales: el desarrollo y la configuración completos los hizo Valentin Fernandez. */
 export const team: TeamMember[] = [
   {
     name: 'Valentin Fernandez',
-    role: 'Full Stack Developer',
-    focus: 'Backend, frontend y funcionalidades principales.',
+    role: 'Líder técnico · Full Stack',
+    focus: 'Arquitectura, API REST, aplicación web, landing, base de datos, despliegue y CI/CD.',
     photo: valentinFernandez,
   },
-  {
-    name: 'Camila Moreno',
-    role: 'UI/UX Designer',
-    focus: 'Prototipos de interfaces y apoyo en frontend.',
-    photo: camilaMoreno,
-  },
-  {
-    name: 'Alessia Aguilar',
-    role: 'Backend Developer',
-    focus: 'Validación de funcionalidades.',
-    photo: alessiaAguilar,
-  },
-  {
-    name: 'Jhonattan Chavez',
-    role: 'UI Designer',
-    focus: 'Diseño de interfaces.',
-    photo: jhonattanChavez,
-  },
-  {
-    name: 'Renzo Lavado',
-    role: 'UI Designer',
-    focus: 'Diseño de la landing page.',
-    photo: renzoLavado,
-  },
+  { name: 'Camila Moreno', role: 'Integrante del equipo', photo: camilaMoreno },
+  { name: 'Alessia Aguilar', role: 'Integrante del equipo', photo: alessiaAguilar },
+  { name: 'Jhonattan Chavez', role: 'Integrante del equipo', photo: jhonattanChavez },
+  { name: 'Renzo Lavado', role: 'Integrante del equipo', photo: renzoLavado },
 ];
 
 export interface Faq {

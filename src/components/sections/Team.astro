@@ -11,7 +11,7 @@ import { team } from '@/data/site';
       id="equipo-title"
       eyebrow="Equipo"
       title="Las personas detrás de Healthy Bites"
-      description="Healthy Bites nació como un proyecto universitario. Este es el equipo que lo diseñó y desarrolló."
+      description="Healthy Bites nació como un proyecto universitario. Valentin Fernandez diseñó, desarrolló y configuró toda la plataforma: la API, la aplicación web y esta landing."
     />
 
     <ul role="list" class="mt-14 flex flex-wrap justify-center gap-x-5 gap-y-10">
@@ -36,7 +36,9 @@ import { team } from '@/data/site';
             <figcaption class="mt-4">
               <span class="block font-bold text-ink">{member.name}</span>
               <span class="block text-sm font-semibold text-brand-700">{member.role}</span>
-              <span class="mt-1 block text-sm leading-snug text-muted">{member.focus}</span>
+              {member.focus && (
+                <span class="mt-1 block text-sm leading-snug text-muted">{member.focus}</span>
+              )}
             </figcaption>
           </figure>
         </li>

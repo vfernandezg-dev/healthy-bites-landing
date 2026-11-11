@@ -116,10 +116,14 @@ unitarios, build y tests E2E con auditoría de accesibilidad.
 
 ## Equipo
 
-| Integrante         | Rol                                                          |
-| ------------------ | ------------------------------------------------------------ |
-| Valentin Fernandez | Full Stack Developer: backend, frontend y funcionalidades    |
-| Camila Moreno      | UI/UX Designer: prototipos de interfaces y apoyo en frontend |
-| Alessia Aguilar    | Backend Developer: validación de funcionalidades             |
-| Jhonattan Chavez   | UI Designer: diseño de interfaces                            |
-| Renzo Lavado       | UI Designer: diseño de la landing page                       |
+Healthy Bites es un proyecto académico. **Valentin Fernandez** diseñó, desarrolló y configuró toda la
+plataforma: la arquitectura, la API REST (Spring Boot + PostgreSQL), la aplicación web (Angular), esta
+landing (Astro), la base de datos, el despliegue y la integración continua.
+
+| Integrante         | Rol                        |
+| ------------------ | -------------------------- |
+| Valentin Fernandez | Líder técnico · Full Stack |
+| Camila Moreno      | Integrante del equipo      |
+| Alessia Aguilar    | Integrante del equipo      |
+| Jhonattan Chavez   | Integrante del equipo      |
+| Renzo Lavado       | Integrante del equipo      |

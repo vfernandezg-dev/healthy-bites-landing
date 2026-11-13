@@ -1,6 +1,6 @@
 /**
  * Lógica del formulario de contacto, independiente de la UI.
- * Las reglas coinciden con ContactMessageDTO en healthy-bites-api: mantenlas sincronizadas.
+ * Las reglas coinciden con ContactMessageDTO en healthybites-backend: mantenlas sincronizadas.
  */
 
 export const CONTACT_LIMITS = {

@@ -5,8 +5,8 @@
 
   <p><strong>Nutrición, hábitos y comunidad en un solo lugar.</strong></p>
 
-[![CI](https://github.com/vfernandezg-dev/healthy-bites-landing/actions/workflows/ci.yml/badge.svg)](https://github.com/vfernandezg-dev/healthy-bites-landing/actions/workflows/ci.yml)
-[![Deploy](https://github.com/vfernandezg-dev/healthy-bites-landing/actions/workflows/deploy.yml/badge.svg)](https://github.com/vfernandezg-dev/healthy-bites-landing/actions/workflows/deploy.yml)
+[![CI](https://github.com/vfernandezg-dev/healthybites-landing/actions/workflows/ci.yml/badge.svg)](https://github.com/vfernandezg-dev/healthybites-landing/actions/workflows/ci.yml)
+[![Deploy](https://github.com/vfernandezg-dev/healthybites-landing/actions/workflows/deploy.yml/badge.svg)](https://github.com/vfernandezg-dev/healthybites-landing/actions/workflows/deploy.yml)
 ![Astro](https://img.shields.io/badge/Astro-7-BC52EE?logo=astro&logoColor=white)
 ![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
@@ -35,9 +35,9 @@ Es un proyecto académico que forma parte de un sistema de tres repositorios:
 
 | Repositorio                                                                       | Descripción                                                 |
 | --------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [healthy-bites-landing](https://github.com/vfernandezg-dev/healthy-bites-landing) | Landing page (este repositorio)                             |
-| [healthy-web-app](https://github.com/vfernandezg-dev/healthy-web-app)             | Aplicación web en Angular: registro, inicio de sesión y uso |
-| [healthy-bites-api](https://github.com/vfernandezg-dev/healthy-bites-api)         | API REST en Spring Boot + PostgreSQL                        |
+| [healthybites-landing](https://github.com/vfernandezg-dev/healthybites-landing)   | Landing page (este repositorio)                             |
+| [healthybites-frontend](https://github.com/vfernandezg-dev/healthybites-frontend) | Aplicación web en Angular: registro, inicio de sesión y uso |
+| [healthybites-backend](https://github.com/vfernandezg-dev/healthybites-backend)   | API REST en Spring Boot + PostgreSQL                        |
 
 ## Características
 
@@ -173,4 +173,4 @@ esta landing (Astro), el despliegue y la integración continua.
 ## Versión anterior
 
 El sitio original (HTML + Bootstrap) se conserva en la rama
-[`legacy`](https://github.com/vfernandezg-dev/healthy-bites-landing/tree/legacy), solo como referencia.
+[`legacy`](https://github.com/vfernandezg-dev/healthybites-landing/tree/legacy), solo como referencia.

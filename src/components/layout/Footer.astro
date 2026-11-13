@@ -88,9 +88,17 @@ const linkClass = 'rounded transition-colors hover:text-white';
   <div class="border-t border-white/10">
     <div class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-sm text-brand-200 sm:flex-row sm:justify-between sm:px-6 lg:px-8">
       <p>
-        © {year} {site.name}. Proyecto académico.
+        © {year} {site.name}. Proyecto académico y de portafolio.
       </p>
-      <p>Hecho en {site.location}</p>
+      <p class="flex flex-wrap gap-x-4 gap-y-1">
+        <a href={`${basePath}privacidad/`} class="underline underline-offset-2 hover:text-white">
+          Privacidad
+        </a>
+        <a href={`${basePath}seguridad/`} class="underline underline-offset-2 hover:text-white">
+          Seguridad
+        </a>
+        <span>Hecho en {site.location}</span>
+      </p>
     </div>
   </div>
 </footer>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { basePath } from '@/lib/config';
+
+interface Props {
+  /** Título de la página (h1). */
+  heading: string;
+  /** Descripción para buscadores y redes. */
+  description: string;
+}
+
+const { heading, description } = Astro.props;
+const pages = [
+  { href: `${basePath}privacidad/`, label: 'Privacidad' },
+  { href: `${basePath}seguridad/`, label: 'Seguridad' },
+];
+const current = Astro.url.pathname;
+---
+
+<BaseLayout title={`${heading} · Healthy Bites`} description={description}>
+  <article
+    aria-labelledby="legal-title"
+    class="legal-prose mx-auto max-w-3xl px-5 pt-32 pb-16 sm:px-6 lg:px-8"
+  >
+    <p class="eyebrow">Actualizada el 13 de noviembre de 2026</p>
+    <h1 id="legal-title">{heading}</h1>
+    <slot />
+
+    <nav
+      aria-label="Políticas"
+      class="mt-14 flex flex-wrap gap-x-5 gap-y-2 border-t border-brand-100 pt-6 text-sm"
+    >
+      {pages.map((page) => (
+        <a href={page.href} aria-current={current === page.href ? 'page' : undefined}>
+          {page.label}
+        </a>
+      ))}
+    </nav>
+  </article>
+</BaseLayout>

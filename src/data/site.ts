@@ -2,7 +2,7 @@
  * Contenido de la landing: única fuente de verdad para textos y datos.
  * Los componentes solo presentan esta información.
  *
- * Las funcionalidades descritas aquí existen en healthy-bites-api; si cambian,
+ * Las funcionalidades descritas aquí existen en healthybites-backend; si cambian,
  * actualiza este archivo para no prometer algo que la plataforma no hace.
  */
 import type { ImageMetadata } from 'astro';
@@ -37,9 +37,9 @@ export const site = {
 } as const;
 
 export const repositories = [
-  { label: 'Landing page', href: 'https://github.com/vfernandezg-dev/healthy-bites-landing' },
-  { label: 'Aplicación web', href: 'https://github.com/vfernandezg-dev/healthy-web-app' },
-  { label: 'API REST', href: 'https://github.com/vfernandezg-dev/healthy-bites-api' },
+  { label: 'Landing page', href: 'https://github.com/vfernandezg-dev/healthybites-landing' },
+  { label: 'Aplicación web', href: 'https://github.com/vfernandezg-dev/healthybites-frontend' },
+  { label: 'API REST', href: 'https://github.com/vfernandezg-dev/healthybites-backend' },
 ] as const;
 
 export interface NavLink {

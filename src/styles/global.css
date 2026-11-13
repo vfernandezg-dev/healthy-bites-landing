@@ -257,3 +257,39 @@
   background-color: var(--color-brand-700);
   color: var(--color-white);
 }
+
+/* ─── Páginas de texto (privacidad, seguridad): una columna de lectura ─── */
+@layer components {
+  .legal-prose {
+    @apply text-pretty text-ink;
+
+    & .eyebrow {
+      @apply text-xs font-semibold tracking-[0.08em] text-muted uppercase;
+    }
+    & h1 {
+      @apply mt-2 text-3xl font-extrabold tracking-tight text-balance sm:text-4xl;
+    }
+    & .lead {
+      @apply mt-5 text-lg text-muted;
+    }
+    & h2 {
+      @apply mt-10 text-xl font-bold tracking-tight;
+    }
+    & p,
+    & ul {
+      @apply mt-3 leading-relaxed;
+    }
+    & ul {
+      @apply list-disc space-y-2 pl-5 marker:text-brand-600;
+    }
+    & a {
+      @apply font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800;
+    }
+    & a[aria-current='page'] {
+      @apply text-ink no-underline;
+    }
+    & code {
+      @apply rounded bg-brand-50 px-1 py-0.5 text-[0.9em];
+    }
+  }
+}

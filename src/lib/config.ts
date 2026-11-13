@@ -4,8 +4,9 @@
  * La autenticación vive en el web-app (Angular), que guarda la sesión en su propio origen.
  * La landing no implementa login: solo enlaza a las rutas de auth del web-app.
  */
-const DEFAULT_APP_URL = 'https://healthy-bites-v1.netlify.app';
-const DEFAULT_API_URL = 'https://healthybites-api-latest.onrender.com/api/v1';
+const DEFAULT_APP_URL = 'https://app-healthybites.vfernandezg.dev';
+// Si cambia, cambia también el respaldo de connect-src en astro.config.mjs.
+const DEFAULT_API_URL = 'https://api-healthybites.vfernandezg.dev/api/v1';
 
 /** Usa el valor configurado (o el de respaldo) sin barras finales. */
 export function normalizeBaseUrl(value: string | undefined, fallback: string): string {

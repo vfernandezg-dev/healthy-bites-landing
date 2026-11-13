@@ -165,3 +165,57 @@ test.describe('animaciones', () => {
     await expect(item).not.toHaveAttribute('open', '');
   });
 });
+
+test.describe('políticas y seguridad', () => {
+  for (const policy of [
+    { path: './privacidad/', heading: 'Política de privacidad' },
+    { path: './seguridad/', heading: 'Política de seguridad' },
+  ]) {
+    test(`${policy.heading}: accesible y enlazada desde el pie`, async ({ page }) => {
+      await page.goto('./');
+      await page
+        .getByRole('contentinfo')
+        .getByRole('link', { name: policy.heading.replace('Política de ', ''), exact: false })
+        .first()
+        .click();
+      await expect(page.getByRole('heading', { level: 1 })).toHaveText(policy.heading);
+      await expect(page.getByRole('main')).toContainText('proyecto académico y de portafolio');
+      await expectNoA11yViolations(page);
+    });
+  }
+
+  test('la CSP no bloquea nada en las páginas (scripts, estilos ni la isla de contacto)', async ({
+    page,
+  }) => {
+    const violations: string[] = [];
+    await page.exposeFunction('reportCspViolation', (detail: string) => violations.push(detail));
+    await page.addInitScript(() => {
+      document.addEventListener('securitypolicyviolation', (event) => {
+        // @ts-expect-error: expuesta con exposeFunction.
+        window.reportCspViolation(`${event.violatedDirective} ${event.blockedURI}`);
+      });
+    });
+
+    for (const path of ['./', './privacidad/', './seguridad/', './ruta-que-no-existe/']) {
+      await page.goto(path);
+      await page.waitForLoadState('networkidle');
+    }
+    await page.goto('./#contacto');
+    await page.locator('astro-island:not([ssr])').waitFor();
+
+    const csp = await page
+      .locator('meta[http-equiv="content-security-policy"]')
+      .getAttribute('content');
+    expect(csp).toContain("default-src 'self'");
+    expect(csp).toContain("object-src 'none'");
+    expect(violations).toEqual([]);
+  });
+
+  test('security.txt publica el contacto y la política', async ({ request }) => {
+    const response = await request.get('./.well-known/security.txt');
+    expect(response.ok()).toBe(true);
+    const body = await response.text();
+    expect(body).toContain('Contact: mailto:projects@vfernandezg.dev');
+    expect(body).toContain('Policy: https://healthybites.vfernandezg.dev/seguridad/');
+  });
+});
